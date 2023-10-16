@@ -4,7 +4,7 @@ name: Frontend CI / CD
 on:
   push:
     branches:
-      - "main"
+      - "main" # dev
 
 # workflow 내에서 사용할 변수 값 저장
 env:
@@ -52,7 +52,7 @@ jobs:
         context: .
         push: true
         tags: |
-          ${{env.ECR}}/pda-project:main-${{env.TAG}}
+          ${{env.ECR}}/${{ env.ECR_REPOSITORY_NAME }}:main-${{env.TAG}}
         cache-from: type=gha
         cache-to: type=gha,mode=max
         build-args: |
